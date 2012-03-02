@@ -42,6 +42,10 @@ module GithubIssues
       JSON.parse(api_request("#{base_url}/labels", 'POST', options))
     end
 
+    def delete_label(id)
+      JSON.parse(api_request("#{base_url}/labels/#{id}", 'DELETE'))
+    end
+
     def api_request(api_url, http_method='GET', params={})
 
       url = URI.parse(api_url)
@@ -53,6 +57,13 @@ module GithubIssues
 
         request = Net::HTTP::Post.new(url.request_uri)
         request.body = params.to_json
+        request.basic_auth @config['username'], @config['password']
+      elsif http_method == 'DELETE'
+        http = Net::HTTP.new(url.host, url.port)
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+        request = Net::HTTP::Delete.new(url.request_uri)
         request.basic_auth @config['username'], @config['password']
       elsif http_method == 'PATCH'
         http = Net::HTTP.new(url.host, url.port)

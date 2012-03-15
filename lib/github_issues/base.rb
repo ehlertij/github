@@ -13,7 +13,8 @@ module GithubIssues
     end
 
     def base_url
-      "https://api.github.com/repos/#{@config['repo_user']}/#{@config['repo']}"
+      base = @config['repo_organization'] || @config['repo_user']
+      "https://api.github.com/repos/#{base}/#{@config['repo']}"
     end
 
     def get(id)

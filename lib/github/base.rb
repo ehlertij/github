@@ -5,10 +5,9 @@ module Github
       app_root = args[:app_root] || '.'
 
       config_file = args[:config_file] || '/config/github.yml'
-      yml_file    = app_root+config_file
 
-      raise yml_file+" not found" unless File.exist? yml_file
-      @config = YAML.load(File.open yml_file)
+      raise config_file+" not found" unless File.exist? config_file
+      @config = YAML.load(File.open config_file)
     end
 
     def base_url

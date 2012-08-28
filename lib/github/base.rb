@@ -21,11 +21,11 @@ module Github
     end
 
     def pull_requests
-      @pull_requests ||= PullRequests.new(@config)
+      @pull_requests ||= PullRequests.new(config: @config)
     end
 
     def issues
-      @issues ||= Issues.new(@config)
+      @issues ||= Issues.new(config: @config)
     end
 
     def api_request(api_url, http_method='GET', params={})

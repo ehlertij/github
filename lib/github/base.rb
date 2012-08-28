@@ -10,6 +10,10 @@ module Github
       @config = YAML.load(File.open config_file)
     end
 
+    def config
+      @config
+    end
+
     def base_url
       base = @config['repo_organization'] || @config['repo_user']
       "https://api.github.com/repos/#{base}/#{@config['repo']}"

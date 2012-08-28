@@ -1,17 +1,17 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "github_issues/version"
+require "github/version"
 
 Gem::Specification.new do |s|
-  s.name        = "github_issues"
-  s.version     = GithubIssues::VERSION
-  s.authors     = ["Jon Phenow"]
-  s.email       = ["jon.phenow@tstmedia.com"]
+  s.name        = "github"
+  s.version     = Github::VERSION
+  s.authors     = ["Ian Ehlert","Jon Phenow"]
+  s.email       = ["ian.ehlert@tstmedia.com","jon.phenow@tstmedia.com"]
   s.homepage    = ""
   s.summary     = %q{Github API connector}
   s.description = %q{}
 
-  s.rubyforge_project = "github_issues"
+  s.rubyforge_project = "github"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

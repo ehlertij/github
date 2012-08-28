@@ -28,6 +28,10 @@ module Github
       @issues ||= Issues.new(config: @config)
     end
 
+    def users
+      @users ||= Users.new(config: @config)
+    end
+
     def api_request(api_url, http_method='GET', params={})
 
       url = URI.parse(base_url + api_url)

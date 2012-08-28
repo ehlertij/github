@@ -1,7 +1,7 @@
 module Github
   class Base
     class << self
-      def configure(args={})
+      def initialize(args={})
         # work out the default app_root
         app_root = args[:app_root] || '.'
 

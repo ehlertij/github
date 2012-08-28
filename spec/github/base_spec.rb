@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'github'
+require 'pp'
 
 describe Github do
   let(:github_config) { File.expand_path("../../support/sample_github.yml", __FILE__) }
@@ -20,7 +21,13 @@ describe Github do
 
   context "#pull_requests" do
     it "lists the pull_requests for the repo" do
-      github.pull_requests.list
+      pulls = github.pull_requests.list
+      pulls.count.should > 0
+    end
+
+    it "returns a single pull_request if given an id" do
+      pull = github.pull_requests.get(66)
+      pull["title"].should == "This is just for testing the API. Do not close or merge this pull."
     end
   end
 end

@@ -15,5 +15,9 @@ module Github
     def update(id, options={})
       JSON.parse(api_request("/pulls/#{id}", 'PATCH', options))
     end
+
+    def comments(id)
+      JSON.parse(api_request("/pulls/#{id}/comments", 'GET'))
+    end
   end
 end

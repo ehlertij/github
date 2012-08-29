@@ -23,5 +23,9 @@ module Github
     def delete_label(id)
       JSON.parse(api_request("/labels/#{id}", 'DELETE'))
     end
+
+    def comments(id)
+      JSON.parse(api_request("/issues/#{id}/comments", 'GET'))
+    end
   end
 end

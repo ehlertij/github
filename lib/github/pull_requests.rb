@@ -19,5 +19,9 @@ module Github
     def comments(id)
       JSON.parse(api_request("/pulls/#{id}/comments", 'GET'))
     end
+
+    def commits(id)
+      JSON.parse(api_request("/pulls/#{id}/commits", 'GET'))
+    end
   end
 end
